@@ -5,20 +5,25 @@
 
 <body>
   <div class="container">
-    <nav>
-      <div class="nav-wrapper">
+    <div class="row">
+      <div class="col s12">
         <div class="right">
-          {{> loginButtons}}
+        {{> loginButtons}}
         </div>
       </div>
-    </nav>
+    </div>
   </div>
   
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h1>Gaslist simple</h1>  
-      </div>
+        <h1>Gaslist simple</h1>
+          {{> loggedin}}
+       </div>
     </div>
   </div>
 </body>
+
+<template name="loggedin">
+  <p>Hi {{name}}</p>
+</template>
