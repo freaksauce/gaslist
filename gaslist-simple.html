@@ -1,6 +1,7 @@
 <head>
   <title>gaslist-simple</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
 </head>
 
 <body>
@@ -18,12 +19,28 @@
     <div class="row">
       <div class="col l12">
         <h1>Gaslist simple</h1>
-          {{> loggedin}}
+          {{> userGaslists}}
        </div>
     </div>
   </div>
 </body>
 
-<template name="loggedin">
-  <p>Hi {{name}}</p>
+<template name="userGaslists">
+  {{#if currentUser}}
+    <p>Logged in</p>
+    {{#if hasGaslists}}
+      <h2>My gaslists</h2>
+    {{else}}
+      <h2>Create your first gaslist</h2>
+      <form id="createGaslist">
+        <div class="input-field">
+          <label>Gaslist name</label>
+          <input type="text" name="gaslistName"/>
+        </div>
+        <input type="submit" value="Submit"/>
+      </form>
+    {{/if}}
+  {{else}}
+    <p>Not logged in</p>
+  {{/if}}
 </template>
