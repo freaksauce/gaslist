@@ -1,5 +1,7 @@
 if (Meteor.isClient) {
-  gaslistsCollection = new Mongo.Collection('gaslistsCollection');
+  
+  Meteor.subscribe('gaslistsCollection');
+
   
   Template.userGaslists.helpers({
     gaslists: function() {
@@ -21,16 +23,24 @@ if (Meteor.isClient) {
   Template.userGaslists.events({
     'submit #createGaslist': function(evt){
         evt.preventDefault();
-        var val = evt.target.gaslistName.value;
-        console.log('submit: '+val);
+        var gaslistName = evt.target.gaslistName.value;
+        console.log('submit: '+gaslistName);
+      
+        gaslistsCollection.insert({
+          listName: gaslistName,
+          createdBy: this._id
+        });
     }
   });
 
 }
 
 if (Meteor.isServer) {
+  gaslistsCollection = new Mongo.Collection('gaslistsCollection');
   Meteor.startup(function () {
     // code to run on server at startup
-    
+    Meteor.publish('gaslistsCollection', function(){
+        return gaslistsCollection.find()
+    });
   });
 }
