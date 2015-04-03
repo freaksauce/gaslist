@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
-  
-  Meteor.subscribe('gaslistsCollection');
+  gaslistsCollection = new Mongo.Collection('gaslistsCollection');
+//   Meteor.subscribe('gaslistsCollection');
 
   
   Template.userGaslists.helpers({
@@ -36,11 +36,11 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  gaslistsCollection = new Mongo.Collection('gaslistsCollection');
+  
   Meteor.startup(function () {
     // code to run on server at startup
-    Meteor.publish('gaslistsCollection', function(){
-        return gaslistsCollection.find()
-    });
+//     Meteor.publish('gaslistsCollection', function(){
+//         return gaslistsCollection.find()
+//     });
   });
 }
