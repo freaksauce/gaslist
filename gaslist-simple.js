@@ -1,8 +1,7 @@
-if (Meteor.isClient) {
-  gaslistsCollection = new Mongo.Collection('gaslistsCollection');
-//   Meteor.subscribe('gaslistsCollection');
+gaslistsCollection = new Mongo.Collection('gaslistsCollection');
 
-  
+if (Meteor.isClient) {
+//   Meteor.subscribe('gaslistsCollection');
   Template.userGaslists.helpers({
     gaslists: function() {
       this._id = Meteor.userId();
@@ -26,10 +25,18 @@ if (Meteor.isClient) {
         var gaslistName = evt.target.gaslistName.value;
         console.log('submit: '+gaslistName);
       
-        gaslistsCollection.insert({
-          listName: gaslistName,
-          createdBy: this._id
+        var checkExists = gaslistsCollection.findOne({
+          listName: gaslistName
         });
+        console.log(checkExists);
+        if (!checkExists) {
+          gaslistsCollection.insert({
+            listName: gaslistName,
+            createdBy: this._id
+          });
+        }else{
+          $('.errorMsg').text('This gaslist name is already in use');
+        }    
     }
   });
 
