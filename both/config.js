@@ -1,0 +1,1 @@
+gaslistsCollection = new Mongo.Collection('gaslistsCollection');
