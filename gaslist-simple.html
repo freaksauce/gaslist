@@ -29,6 +29,11 @@
   {{#if currentUser}}
     <p>Logged in</p>
     {{#if hasGaslists}}
+      <ul>
+      {{#each gaslist}}
+        <li>{{listName}}</li>
+      {{/each}}
+      </ul>
       <h2>My gaslists</h2>
     {{else}}
       <h2>Create your first gaslist</h2>

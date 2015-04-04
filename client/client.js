@@ -1,10 +1,10 @@
 // Meteor.subscribe('gaslistsCollection');
 
 Template.userGaslists.helpers({
-  gaslists: function() {
+  hasGaslists: function() {
     this._id = Meteor.userId();
     Session.set('currentUser', this._id);
-    var userGasLists = gaslistsCollection.find({_id: this._id});
+    var userGasLists = gaslistsCollection.find({createdBy: this._id});
     var count = userGasLists.count();
     console.log(userGasLists);
     console.log(count);
@@ -14,6 +14,9 @@ Template.userGaslists.helpers({
     }else{
       return false;
     }
+  },
+  gaslists: function() {
+    return gaslistsCollection.find({createdBy: Meteor.userId()});
   }
 });
 
