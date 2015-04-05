@@ -1,0 +1,28 @@
+<template name="showGaslist">
+  <h2>Gaslist {{listName}}</h2>
+  <!-- {{#if hasItems}} -->
+      {{> listItems}}
+  <!-- {{/if}} -->
+
+  {{> addItems}}
+</template>
+
+<template name="listItems">
+  <ul>
+    {{#each items}}
+      <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn delete" data-id="{{id}}" data-listid="{{gaslistId}}">X</a></li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="addItems">
+  <h3>Add item to Gaslist</h3>
+  <div class="msg"></div>
+  <form id="addItemToGaslist" method="post">
+    <div class="input-field">
+      <label for="item">URL</label>
+      <input id="item" name="item" data-id="{{_id}}" type="text" value="">
+      <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
+    </div>
+  </form>
+</template>
