@@ -1,4 +1,4 @@
-// Meteor.subscribe('gaslistsCollection');
+Meteor.subscribe('gaslistsCollection');
 
 Template.userGaslists.helpers({
   hasGaslists: function() {
@@ -29,16 +29,16 @@ Template.userGaslists.events({
         listName: gaslistName
       });
       console.log(checkExists);
-      if (!checkExists) {
+      // if (!checkExists) {
         gaslistsCollection.insert({
           listName: gaslistName,
           createdBy: Meteor.userId()
         });
         $('input[name=gaslistName]').val('');
-        $('.msg').text('Your gaslist "'+gasListName+'" was created.')
-      }else{
-        $('.errorMsg').text('This gaslist name is already in use');
-        $('input[name=gaslistName]').val('');
-      }
+        $('.msg').text('Your gaslist "'+gaslistName+'" was created.')
+      // }else{
+      //   $('.errorMsg').text('This gaslist name is already in use');
+      //   $('input[name=gaslistName]').val('');
+      // }
   }
 });

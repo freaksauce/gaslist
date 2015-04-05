@@ -29,14 +29,17 @@
   {{#if currentUser}}
     <p>Logged in</p>
     {{#if hasGaslists}}
+      <h2>My gaslists</h2>
       <ul>
       {{#each gaslists}}
         <li>{{listName}}</li>
       {{/each}}
       </ul>
-      <h2>My gaslists</h2>
+      <h2>Create a new Gaslist</h2>
     {{else}}
-      <h2>Create your first gaslist</h2>
+      <h2>Create your first Gaslist</h2>
+    {{/if}}
+
       <p class="errorMsg"></p>
       <p class="msg"></p>
       <form id="createGaslist">
@@ -46,7 +49,6 @@
         </div>
         <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
       </form>
-    {{/if}}
   {{else}}
     <p>Not logged in</p>
   {{/if}}
