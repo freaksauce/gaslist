@@ -6,7 +6,6 @@
 
 <body>
   {{> nav}}
-
 </body>
 
 <template name="layoutMain">
@@ -18,49 +17,4 @@
       </div>
     </div>
   </div>
-</template>
-
-<template name="nav">
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <div class="right">
-        {{> loginButtons}}
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="userGaslists">
-  {{#if currentUser}}
-    <p>Logged in</p>
-    {{#if hasGaslists}}
-      <h2>My gaslists</h2>
-      <ul>
-      {{#each gaslists}}
-        <li><a href="/gaslist/{{_id}}">{{listName}}</a> | <a href="#" class="btn delete" data-id="{{_id}}">X</a></li>
-      {{/each}}
-      </ul>
-      <h2>Create a new Gaslist</h2>
-    {{else}}
-      <h2>Create your first Gaslist</h2>
-    {{/if}}
-
-      <p class="errorMsg"></p>
-      <p class="msg"></p>
-      <form id="createGaslist">
-        <div class="input-field">
-          <label>Gaslist name</label>
-          <input type="text" name="gaslistName"/>
-        </div>
-        <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
-      </form>
-  {{else}}
-    <p>Not logged in</p>
-  {{/if}}
-</template>
-
-<template name="showGaslist">
-  <h2>Gaslist {{listName}}</h2>
 </template>
