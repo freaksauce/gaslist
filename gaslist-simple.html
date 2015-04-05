@@ -5,6 +5,10 @@
 </head>
 
 <body>
+  {{> nav}}
+</body>
+
+<template name="nav">
   <div class="container">
     <div class="row">
       <div class="col s12">
@@ -14,16 +18,18 @@
       </div>
     </div>
   </div>
+</template>
 
+<template name="gaslistContent">
   <div class="container">
     <div class="row">
       <div class="col l12">
         <h1>Gaslist simple</h1>
-          {{> userGaslists}}
-       </div>
+        {{> userGaslists}}
+      </div>
     </div>
   </div>
-</body>
+</template>
 
 <template name="userGaslists">
   {{#if currentUser}}
@@ -32,7 +38,7 @@
       <h2>My gaslists</h2>
       <ul>
       {{#each gaslists}}
-        <li>{{listName}} | <a href="#" class="btn delete" data-id="{{_id}}">X</a></li>
+        <li><a href="/gaslist/{{_id}}">{{listName}}</a> | <a href="#" class="btn delete" data-id="{{_id}}">X</a></li>
       {{/each}}
       </ul>
       <h2>Create a new Gaslist</h2>
@@ -52,4 +58,8 @@
   {{else}}
     <p>Not logged in</p>
   {{/if}}
+</template>
+
+<template name="showGaslist">
+  <h2>Gaslist {{listName}}</h2>
 </template>
