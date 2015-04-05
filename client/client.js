@@ -38,6 +38,7 @@ Template.userGaslists.events({
         $('.msg').text('Your gaslist "'+gasListName+'" was created.')
       }else{
         $('.errorMsg').text('This gaslist name is already in use');
+        $('input[name=gaslistName]').val('');
       }
   }
 });
