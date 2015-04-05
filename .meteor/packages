@@ -9,3 +9,4 @@ accounts-ui
 accounts-password
 fourseven:scss
 iron:router
+iron:layout

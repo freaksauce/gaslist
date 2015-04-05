@@ -6,6 +6,14 @@
 
 <body>
   {{> nav}}
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h1>Gaslist simple</h1>
+        {{> yield}}
+      </div>
+    </div>
+  </div>
 </body>
 
 <template name="nav">
@@ -15,17 +23,6 @@
         <div class="right">
         {{> loginButtons}}
         </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="gaslistContent">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h1>Gaslist simple</h1>
-        {{> userGaslists}}
       </div>
     </div>
   </div>
