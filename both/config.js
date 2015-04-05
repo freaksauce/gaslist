@@ -9,6 +9,7 @@ Router.route('/', function () {
 // });
 
 Router.route('/gaslist/:_id', function () {
-  var list = gaslistCollection.findOne({_id: this.params._id});
+  console.log('list:id');
+  var list = gaslistsCollection.findOne({_id: this.params._id});
   this.render('ShowGaslist', {data: list});
 });
