@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row">
       <div class="col l12">
@@ -30,7 +30,7 @@
     <p>Logged in</p>
     {{#if hasGaslists}}
       <ul>
-      {{#each gaslist}}
+      {{#each gaslists}}
         <li>{{listName}}</li>
       {{/each}}
       </ul>
@@ -38,6 +38,7 @@
     {{else}}
       <h2>Create your first gaslist</h2>
       <p class="errorMsg"></p>
+      <p class="msg"></p>
       <form id="createGaslist">
         <div class="input-field">
           <label>Gaslist name</label>

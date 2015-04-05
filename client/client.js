@@ -6,9 +6,8 @@ Template.userGaslists.helpers({
     Session.set('currentUser', this._id);
     var userGasLists = gaslistsCollection.find({createdBy: this._id});
     var count = userGasLists.count();
-    console.log(userGasLists);
+    console.log(userGasLists.fetch());
     console.log(count);
-    Session.set('userGasLists', userGasLists);
     if (count > 0) {
       return true;
     }else{
@@ -23,20 +22,22 @@ Template.userGaslists.helpers({
 Template.userGaslists.events({
   'submit #createGaslist': function(evt){
       evt.preventDefault();
-      var gaslistName = evt.target.gaslistName.value;
+      gaslistName = evt.target.gaslistName.value;
       console.log('submit: '+gaslistName);
 
-      var checkExists = gaslistsCollection.findOne({
+      var checkExists = gaslistsCollection.find({
         listName: gaslistName
       });
       console.log(checkExists);
       if (!checkExists) {
         gaslistsCollection.insert({
           listName: gaslistName,
-          createdBy: this._id
+          createdBy: Meteor.userId()
         });
+        $('input[name=gaslistName]').val('');
+        $('.msg').text('Your gaslist "'+gasListName+'" was created.')
       }else{
         $('.errorMsg').text('This gaslist name is already in use');
-      }    
+      }
   }
 });
