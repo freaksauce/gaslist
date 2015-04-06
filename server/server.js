@@ -22,18 +22,11 @@ Meteor.methods({
   },
   addItemToGaslist: function(gaslistId, item) {
     console.log('METHOD: addItemToGaslist');
-    var gaslist = gaslistsCollection.findOne({_id: gaslistId});
-    var listName = gaslist.listName;
-    var createdBy = gaslist.createdBy;
-    var items = gaslist.items;
-    items.push(item);
-    return gaslistsCollection.update(gaslistId, listName, createdBy, {items: items});
+    return gaslistsCollection.update(gaslistId, {$push: {items: item}});
   },
   removeItemFromGasList: function(gaslistId, itemId) {
     console.log('METHOD: removeItemFromGasList');
     var gaslist = gaslistsCollection.findOne({_id: gaslistId});
-    var listName = gaslist.listName;
-    var createdBy = gaslist.createdBy;
     var items = gaslist.items;
     for(var i = 0; i < items.length; i++) {
       if(items[i].id == itemId) {
@@ -41,6 +34,6 @@ Meteor.methods({
           break;
       }
     }
-    return gaslistsCollection.update(gaslistId, listName, createdBy, {items: items});
+    return gaslistsCollection.update(gaslistId, {$set: {items: items}});
   }
 });
