@@ -26,11 +26,11 @@ Template.userGaslists.events({
       Session.set('gaslistName', gaslistName);
       console.log('submit: '+gaslistName);
 
-      var checkExists = gaslistsCollection.find({
+      var checkCollection = gaslistsCollection.find({
         listName: gaslistName
       });
-      console.log(checkExists);
-      // if (!checkExists) {
+      var checkExists = checkCollection.count();
+      if (checkExists == 0) {
         var addList = Meteor.call('addGaslist', gaslistName, function(err, result) {
           if (err) {
             console.log('[ERROR]:\n');
@@ -40,15 +40,25 @@ Template.userGaslists.events({
           if (result) {
             $('input[name=gaslistName]').val('');
             $('.msg').text('Your gaslist "'+Session.get('gaslistName')+'" was created.');
+            setTimeout(function() {
+              $('.msg').fadeOut(500, function() {
+                $(this).text('').fadeIn();
+              });
+            }, 2000);
             Session.set('gaslistName', '');
-            console.log('list added');
+            // console.log('list added');
           }
         });
-//
-      // }else{
-      //   $('.errorMsg').text('This gaslist name is already in use');
-      //   $('input[name=gaslistName]').val('');
-      // }
+
+      }else{
+        $('.errorMsg').text('This gaslist name is already in use');
+        setTimeout(function() {
+          $('.errorMsg').fadeOut(500, function() {
+            $(this).text('').fadeIn();
+          });
+        }, 2000);
+        $('input[name=gaslistName]').val('');
+      }
   },
   'click .delete': function(evt) {
     console.log('delete');

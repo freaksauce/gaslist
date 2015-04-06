@@ -55,7 +55,7 @@ Template.listItems.events({
         $('.msg').text(itemUrl+' was removed from Gaslist - '+list.listName);
         setTimeout(function() {
           $('.msg').fadeOut(500, function() {
-            $(this).text('');
+            $(this).text('').fadeIn();
           });
         }, 2000);
       }
