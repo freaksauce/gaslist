@@ -1,8 +1,17 @@
 Meteor.subscribe('gaslistsCollection');
 
+Template.showGaslist.helpers({
+  gaslistName: function() {
+    var list = Session.get('gaslist');
+    //return list.listName;
+    console.log(list);
+  }
+});
+
 Template.listItems.helpers({
   gaslistId: function() {
-      return Session.get('gaslistId');
+      var list = Session.get('gaslist');
+      return list._id;
   }
 });
 
@@ -18,6 +27,7 @@ Template.addItems.events({
         return;
       }
       if (result) {
+        $('input[name=item]').val('');
         console.log(result);
       }
     });
@@ -28,9 +38,10 @@ Template.listItems.events({
   'click .delete': function(evt) {
     console.log('delete');
     evt.preventDefault();
+    var itemUrl = evt.target.getAttribute('data-href');
     var listId = evt.target.getAttribute('data-listid');
     var itemId = evt.target.getAttribute('data-id');
-    console.log(listId+' : '+itemId);
+    console.log(itemUrl+' itemUrl');
 
     Meteor.call('removeItemFromGasList', listId, itemId, function(err, result) {
       if (err) {
@@ -40,6 +51,13 @@ Template.listItems.events({
       }
       if (result) {
         console.log(result);
+        var list = Session.get('gaslist');
+        $('.msg').text(itemUrl+' was removed from Gaslist - '+list.name);
+        setTimeout(function() {
+          $('.msg').fadeOut(500, function() {
+            $(this).text('');
+          });
+        }, 2000);
       }
     });
   }

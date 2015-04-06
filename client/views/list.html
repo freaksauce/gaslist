@@ -1,5 +1,5 @@
 <template name="showGaslist">
-  <h2>Gaslist {{listName}}</h2>
+  <h2>Gaslist - {{gaslistName}}</h2>
   <!-- {{#if hasItems}} -->
       {{> listItems}}
   <!-- {{/if}} -->
@@ -10,7 +10,7 @@
 <template name="listItems">
   <ul>
     {{#each items}}
-      <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn delete" data-id="{{id}}" data-listid="{{gaslistId}}">X</a></li>
+      <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn delete" data-id="{{id}}" data-listid="{{gaslistId}}" data-href="{{url}}">X</a></li>
     {{/each}}
   </ul>
 </template>
