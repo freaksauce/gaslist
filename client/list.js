@@ -21,11 +21,17 @@ Template.addItems.events({
         console.log(result);
       }
     });
-  },
+  }
+});
+
+Template.listItems.events({
   'click .delete': function(evt) {
+    console.log('delete');
     evt.preventDefault();
     var listId = evt.target.getAttribute('data-listid');
     var itemId = evt.target.getAttribute('data-id');
+    console.log(listId+' : '+itemId);
+
     Meteor.call('removeItemFromGasList', listId, itemId, function(err, result) {
       if (err) {
         console.log('[ERROR]:\n');
