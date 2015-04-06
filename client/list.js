@@ -35,12 +35,12 @@ Template.addItems.events({
 
 Template.listItems.events({
   'click .delete': function(evt) {
-    console.log('delete');
+    // console.log('delete');
     evt.preventDefault();
     var itemUrl = evt.target.getAttribute('data-href');
     var listId = evt.target.getAttribute('data-listid');
     var itemId = evt.target.getAttribute('data-id');
-    console.log(itemUrl+' itemUrl');
+    // console.log(itemUrl+' itemUrl');
 
     Meteor.call('removeItemFromGasList', listId, itemId, function(err, result) {
       if (err) {
@@ -49,9 +49,10 @@ Template.listItems.events({
         return;
       }
       if (result) {
+        console.log('----- remove item result ----- ');
         console.log(result);
         var list = Session.get('gaslist');
-        $('.msg').text(itemUrl+' was removed from Gaslist - '+list.name);
+        $('.msg').text(itemUrl+' was removed from Gaslist - '+list.listName);
         setTimeout(function() {
           $('.msg').fadeOut(500, function() {
             $(this).text('');
