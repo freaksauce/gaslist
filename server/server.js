@@ -6,6 +6,7 @@ Meteor.startup(function () {
 
 Meteor.methods({
   addGaslist: function(gaslistName) {
+    console.log('METHOD: addGaslist');
     var currentUserId = Meteor.userId();
     return gaslistsCollection.insert({
       listName: gaslistName,
@@ -14,6 +15,7 @@ Meteor.methods({
     });
   },
   removeGaslist: function(gaslistId) {
+    console.log('METHOD: removeGaslist');
     return gaslistsCollection.remove({
       _id: gaslistId
     })
