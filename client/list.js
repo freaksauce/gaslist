@@ -3,8 +3,7 @@ Meteor.subscribe('gaslistsCollection');
 Template.showGaslist.helpers({
   gaslistName: function() {
     var list = Session.get('gaslist');
-    //return list.listName;
-    console.log(list);
+    return list.listName;
   }
 });
 
