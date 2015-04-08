@@ -40,9 +40,10 @@ Template.listItems.events({
     var itemUrl = evt.target.getAttribute('data-href');
     var listId = evt.target.getAttribute('data-listid');
     var itemId = evt.target.getAttribute('data-id');
+    var item = this;
     // console.log(itemUrl+' itemUrl');
 
-    Meteor.call('removeItemFromGasList', listId, itemId, function(err, result) {
+    Meteor.call('removeItemFromGasList', listId, item, function(err, result) {
       if (err) {
         console.log('[ERROR]:\n');
         console.log(err);
