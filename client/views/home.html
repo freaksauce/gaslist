@@ -7,6 +7,11 @@
         {{#each gaslists}}
           <li class="col s6">
             <h3><a href="/gaslist/{{_id}}">{{listName}}</a></h3>
+            <ul class="homeListItems">
+              {{#each items}}
+                <li><a href="{{url}}">{{url}}</a></li>
+              {{/each}}
+            </ul>
             <p><a href="#" class="btn red darken-2 delete" data-id="{{_id}}">Delete</a></p>
           </li>
         {{/each}}
