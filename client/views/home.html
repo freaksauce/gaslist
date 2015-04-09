@@ -2,11 +2,16 @@
   {{#if currentUser}}
     {{#if hasGaslists}}
       <h2>My gaslists</h2>
-      <ul>
-      {{#each gaslists}}
-        <li><a href="/gaslist/{{_id}}">{{listName}}</a> | <a href="#" class="btn red darken-2 delete" data-id="{{_id}}">Delete</a></li>
-      {{/each}}
-      </ul>
+      <div class="row">
+        <ul>
+        {{#each gaslists}}
+          <li class="col s6">
+            <h3><a href="/gaslist/{{_id}}">{{listName}}</a></h3>
+            <p><a href="#" class="btn red darken-2 delete" data-id="{{_id}}">Delete</a></p>
+          </li>
+        {{/each}}
+        </ul>
+      </div>
       <h2>Create a new Gaslist</h2>
     {{else}}
       <h2>Create your first Gaslist</h2>
