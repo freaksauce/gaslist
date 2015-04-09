@@ -1,0 +1,22 @@
+<head>
+  <title>gaslist-simple</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    {{> nav}}
+  </div>
+</body>
+
+<template name="layoutMain">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h1>Gaslist simple</h1>
+        {{> yield }}
+      </div>
+    </div>
+  </div>
+</template>

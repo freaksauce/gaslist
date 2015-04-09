@@ -27,16 +27,6 @@ Meteor.methods({
   removeItemFromGasList: function(gaslistId, item) {
     console.log('METHOD: removeItemFromGasList');
     var gaslist = gaslistsCollection.findOne({_id: gaslistId});
-    console.log(gaslist);
-    console.log(item);
-    // var items = gaslist.items;
-    // for(var i = 0; i < items.length; i++) {
-    //   if(items[i].id == itemId) {
-    //       items.splice(i, 1);
-    //       break;
-    //   }
-    // }
-    // return gaslistsCollection.update(gaslistId, {$set: {items: items}});
     return gaslistsCollection.update({_id: gaslistId}, {$pull: {items: item}});
   }
 });

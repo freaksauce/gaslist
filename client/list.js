@@ -50,8 +50,6 @@ Template.listItems.events({
         return;
       }
       if (result) {
-        console.log('----- remove item result ----- ');
-        console.log(result);
         var list = Session.get('gaslist');
         $('.msg').text(itemUrl+' was removed from Gaslist - '+list.listName);
         setTimeout(function() {
