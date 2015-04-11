@@ -6,9 +6,19 @@ h2 {
   font-size: 26px;
 }
 
-@media (max-width: 360px) {
+.gaslist-items {
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 376px) {
   h1 {
     font-size: 26px;
     margin: 0;
+  }
+
+  #login-dropdown-list {
+    width: auto;
   }
 }
