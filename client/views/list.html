@@ -1,16 +1,20 @@
 <template name="showGaslist">
-  <h2>{{gaslistName}}</h2>
-  <p><a href="/">Back to My Gaslists</a></p>
+  <div class="row">
+    <h2 class="col m8">{{gaslistName}}</h2>
+    <p class="col m4"><a href="/" class="btn"><i class="mdi-navigation-arrow-back"></i> Back</a></p>
+  </div>
   {{> listItems}}
   {{> addItems}}
 </template>
 
 <template name="listItems">
-  <ul class="gaslist-items">
-    {{#each items}}
-      <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn red darken-2 delete" data-id="{{id}}" data-listid="{{gaslistId}}" data-href="{{url}}">Delete</a></li>
-    {{/each}}
-  </ul>
+  <div class="card-panel">
+    <ul class="gaslist-items">
+      {{#each items}}
+        <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn red darken-2 delete" data-id="{{id}}" data-listid="{{gaslistId}}" data-href="{{url}}">Delete</a></li>
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="addItems">
