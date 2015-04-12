@@ -3,7 +3,7 @@ Meteor.subscribe('gaslistsCollection');
 Template.showGaslist.helpers({
   gaslistName: function() {
     var list = Session.get('gaslist');
-    return list.listName;
+    return list;
   }
 });
 
@@ -30,6 +30,10 @@ Template.addItems.events({
         console.log(result);
       }
     });
+  },
+  'click .modal-trigger': function(evt) {
+    var modalId = evt.target.getAttribute('href');
+    $(modalId).openModal();
   }
 });
 

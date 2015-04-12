@@ -1,6 +1,6 @@
 <template name="showGaslist">
   <div class="row">
-    <h2 class="col m8">{{gaslistName}}</h2>
+    <h2 class="col m8">{{gaslistName.listName}}</h2>
     <p class="col m4"><a href="/" class="btn"><i class="mdi-navigation-arrow-back"></i> Back</a></p>
   </div>
   {{> listItems}}
@@ -18,13 +18,36 @@
 </template>
 
 <template name="addItems">
-  <h3>Add item to Gaslist</h3>
+  <!-- <h3>Add item to Gaslist</h3> -->
+  <!-- Modal Trigger -->
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Add item to Gaslist</a>
   <div class="msg"></div>
-  <form id="addItemToGaslist" method="post">
+  {{> addItemModal}}
+  <!-- <form id="addItemToGaslist" method="post">
     <div class="input-field">
       <label for="item">URL</label>
       <input id="item" name="item" data-id="{{_id}}" type="text" value="">
       <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
     </div>
-  </form>
+  </form> -->
+</template>
+
+<template name="addItemModal">
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Add item URL</h4>
+      <form id="addItemToGaslist" method="post">
+        <div class="input-field">
+          <label for="item">URL</label>
+          <input id="item" name="item" data-id="{{_id}}" type="text" value="">
+          <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+</div>
+
 </template>
