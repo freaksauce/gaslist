@@ -66,8 +66,9 @@ Template.addItemModal.events({
   },
   'submit #addItemToGaslist': function(evt, template) {
     evt.preventDefault();
-    console.log(evt.target);
-    var listId = evt.target.item.getAttribute('data-id');
+    var listId = evt.target.getAttribute('data-id');
+    var item = {id: Date.now(), url: template.$('#gas-url').val(), title: template.$('#gas-item-title').val(), image: template.$('#gas-item-image').attr('src')};
+    console.log(item);
   }
 });
 
