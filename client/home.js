@@ -47,8 +47,7 @@ Template.userGaslists.events({
                 $(this).text('').fadeIn();
               });
             }, 2000);
-            Session.gaslistName.set('');
-            // console.log('list added');
+            console.log('list added');
           }
         });
 
