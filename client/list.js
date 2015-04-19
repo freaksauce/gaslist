@@ -15,22 +15,22 @@ Template.listItems.helpers({
 });
 
 Template.addItems.events({
-  'submit #addItemToGaslist': function(evt) {
-    evt.preventDefault();
-    var listId = evt.target.item.getAttribute('data-id');
-    var item = {id: Date.now(), url: evt.target.item.value};
-    Meteor.call('addItemToGaslist', listId, item, function(err, result) {
-      if (err) {
-        console.log('[ERROR]:\n');
-        console.log(err);
-        return;
-      }
-      if (result) {
-        $('input[name=item]').val('');
-        console.log(result);
-      }
-    });
-  },
+  // 'submit #addItemToGaslist': function(evt) {
+  //   evt.preventDefault();
+  //   var listId = evt.target.item.getAttribute('data-id');
+  //   var item = {id: Date.now(), url: evt.target.item.value};
+  //   Meteor.call('addItemToGaslist', listId, item, function(err, result) {
+  //     if (err) {
+  //       console.log('[ERROR]:\n');
+  //       console.log(err);
+  //       return;
+  //     }
+  //     if (result) {
+  //       $('input[name=item]').val('');
+  //       console.log(result);
+  //     }
+  //   });
+  // },
   'click .modal-trigger': function(evt) {
     var modalId = evt.target.getAttribute('href');
     $(modalId).openModal();
@@ -60,9 +60,14 @@ Template.addItemModal.events({
         // template.$('#gas-item-description').val(result.description);
         template.$('#gas-item-image').attr('src',result.image);
 
+        template.$('.confirm-item').removeClass('hide');
       }
     });
-
+  },
+  'submit #addItemToGaslist': function(evt, template) {
+    evt.preventDefault();
+    console.log(evt.target);
+    var listId = evt.target.item.getAttribute('data-id');
   }
 });
 

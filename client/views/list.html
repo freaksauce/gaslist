@@ -30,10 +30,10 @@
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Add item URL</h4>
-      <form id="addItemToGaslist" method="post">
+      <form id="addItemToGaslist" method="post" data-id="{{_id}}">
         <div class="input-field gas-item">
           <label for="gas-url">URL</label>
-          <input id="gas-url" name="item" data-id="{{_id}}" type="text" value="">
+          <input id="gas-url" name="item" type="text" value="">
           <button class="btn green" type="button" id="get-info">Get info</button>
         </div>
         
@@ -55,11 +55,11 @@
           </div> -->
           <div class="input-field">
             <label for="gas-item-image">Image:</label>
-            <img id="gas-item-image" class="img-responsive" src="{{image}}"/>
+            <img id="gas-item-image" class="responsive-img" src="{{image}}"/>
           </div>
         </div>
 
-        <div class="input-field hide">
+        <div class="input-field hide confirm-item">
           <input class="btn green darken-2" type="submit" value="Add GAS item to list"/>
         </div>
       </form>
