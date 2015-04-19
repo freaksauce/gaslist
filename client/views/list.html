@@ -1,7 +1,7 @@
 <template name="showGaslist">
   <div class="row">
     <h2 class="col m8">{{gaslistName.listName}}</h2>
-    <p class="col m4"><a href="/" class="btn"><i class="mdi-navigation-arrow-back"></i> Back</a></p>
+    <p class="col m4"><a href="/" class="btn green darken-2"><i class="mdi-navigation-arrow-back"></i> Back</a></p>
   </div>
   {{> listItems}}
   {{> addItems}}
@@ -20,7 +20,7 @@
 <template name="addItems">
   <!-- <h3>Add item to Gaslist</h3> -->
   <!-- Modal Trigger -->
-  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Add item to Gaslist</a>
+  <a class="modal-trigger btn green darken-2" href="#modal1">Add item to Gaslist</a>
   <div class="msg"></div>
   {{> addItemModal}}  
 </template>
@@ -34,7 +34,7 @@
         <div class="input-field">
           <label for="item">URL</label>
           <input id="item" name="item" data-id="{{_id}}" type="text" value="">
-          <input class="btn waves-effect waves-light" type="submit" value="Submit"/>
+          <input class="btn green darken-2" type="submit" value="Submit"/>
         </div>
       </form>
     </div>
