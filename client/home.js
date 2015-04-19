@@ -1,10 +1,12 @@
 Meteor.subscribe('gaslistsCollection');
 
+Template.userGaslists.created = function() {
+  this.gaslistName = new ReactiveVar;
+}
+
 Template.userGaslists.helpers({
   hasGaslists: function() {
-    this._id = Meteor.userId();
-    Session.set('currentUser', this._id);
-    var userGasLists = gaslistsCollection.find({createdBy: this._id});
+    var userGasLists = gaslistsCollection.find({createdBy: Meteor.userId()});
     var count = userGasLists.count();
     // console.log(userGasLists.fetch());
     // console.log(count);
@@ -20,10 +22,10 @@ Template.userGaslists.helpers({
 });
 
 Template.userGaslists.events({
-  'submit #createGaslist': function(evt){
+  'submit #createGaslist': function(evt, template){
       evt.preventDefault();
       gaslistName = evt.target.gaslistName.value;
-      Session.set('gaslistName', gaslistName);
+      template.gaslistName.set(gaslistName);
       console.log('submit: '+gaslistName);
 
       var checkCollection = gaslistsCollection.find({
@@ -39,13 +41,13 @@ Template.userGaslists.events({
           }
           if (result) {
             $('input[name=gaslistName]').val('');
-            $('.msg').text('Your gaslist "'+Session.get('gaslistName')+'" was created.');
+            $('.msg').text('Your gaslist "'+template.gaslistName.get()+'" was created.');
             setTimeout(function() {
               $('.msg').fadeOut(500, function() {
                 $(this).text('').fadeIn();
               });
             }, 2000);
-            Session.set('gaslistName', '');
+            Session.gaslistName.set('');
             // console.log('list added');
           }
         });
