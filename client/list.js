@@ -37,6 +37,35 @@ Template.addItems.events({
   }
 });
 
+Template.addItemModal.events({
+  'click button#get-info': function(evt, template) {
+    var url = template.find('#gas-url').value;
+    console.log(url);
+
+    // hide find button
+    template.$('#get-info').addClass('hide');
+    // show progress bar
+    template.$('.loading').removeClass('hide');
+
+    Meteor.call('scrapepage', url, function(error, result) {
+      if (error) {
+        console.log(error);
+      }else{
+        console.log(result);
+        // hide progress bar
+        template.$('.loading').addClass('hide');
+        
+        template.$('.scrape-details').removeClass('hide');
+        template.$('#gas-item-title').val(result.title);
+        // template.$('#gas-item-description').val(result.description);
+        template.$('#gas-item-image').attr('src',result.image);
+
+      }
+    });
+
+  }
+});
+
 Template.listItems.events({
   'click .delete': function(evt) {
     // console.log('delete');

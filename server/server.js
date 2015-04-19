@@ -28,5 +28,10 @@ Meteor.methods({
     console.log('METHOD: removeItemFromGasList');
     var gaslist = gaslistsCollection.findOne({_id: gaslistId});
     return gaslistsCollection.update({_id: gaslistId}, {$pull: {items: item}});
+  },
+  'scrapepage': function(pageUrl) {
+    console.log('scraping');
+    data = Scrape.website(pageUrl);
+    return data;
   }
 });

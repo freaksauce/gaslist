@@ -31,10 +31,36 @@
     <div class="modal-content">
       <h4>Add item URL</h4>
       <form id="addItemToGaslist" method="post">
-        <div class="input-field">
-          <label for="item">URL</label>
-          <input id="item" name="item" data-id="{{_id}}" type="text" value="">
-          <input class="btn green darken-2" type="submit" value="Submit"/>
+        <div class="input-field gas-item">
+          <label for="gas-url">URL</label>
+          <input id="gas-url" name="item" data-id="{{_id}}" type="text" value="">
+          <button class="btn green" type="button" id="get-info">Get info</button>
+        </div>
+        
+        <div class="hide loading">
+          <p>Fetching G.A.S. info</p>
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+
+        <div class="hide scrape-details">
+          <div class="input-field">
+            <label for="gas-item-title">Title:</label>
+            <input id="gas-item-title" type="text" value="{{title}}"/><br/>
+          </div>
+          <!-- <div class="input-field">
+            <label for="gas-item-description">Description:</label>
+            <input id="gas-item-description" type="text" value="{{description}}" />
+          </div> -->
+          <div class="input-field">
+            <label for="gas-item-image">Image:</label>
+            <img id="gas-item-image" class="img-responsive" src="{{image}}"/>
+          </div>
+        </div>
+
+        <div class="input-field hide">
+          <input class="btn green darken-2" type="submit" value="Add GAS item to list"/>
         </div>
       </form>
     </div>
