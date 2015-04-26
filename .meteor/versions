@@ -48,12 +48,12 @@ logging@1.0.7
 materialize:materialize@0.96.1
 meteor@1.1.6
 meteor-platform@1.2.2
-meteortoys:toykit@0.3.4
+meteortoys:toykit@0.3.5
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
-msavin:mongol@1.0.22
+msavin:mongol@1.0.26
 nefiltari:yaki@0.1.81
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6

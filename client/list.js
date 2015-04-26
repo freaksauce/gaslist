@@ -65,10 +65,22 @@ Template.addItemModal.events({
     });
   },
   'submit #addItemToGaslist': function(evt, template) {
+    console.log('submit');
     evt.preventDefault();
     var listId = evt.target.getAttribute('data-id');
     var item = {id: Date.now(), url: template.$('#gas-url').val(), title: template.$('#gas-item-title').val(), image: template.$('#gas-item-image').attr('src')};
     console.log(item);
+    Meteor.call('addItemToGaslist', listId, item, function(err, result) {
+      if (err) {
+        console.log('[ERROR]:\n');
+        console.log(err);
+        return;
+      }
+      if (result) {
+        template.$('#modal1').closeModal();
+        console.log(result);
+      }
+    });
   }
 });
 

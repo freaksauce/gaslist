@@ -11,7 +11,7 @@
   <div class="card-panel">
     <ul class="gaslist-items">
       {{#each items}}
-        <li><a href="{{url}}">{{url}}</a> | <a href="#" class="btn red darken-2 delete" data-id="{{id}}" data-listid="{{gaslistId}}" data-href="{{url}}">Delete</a></li>
+        <li><a href="{{url}}">{{title}}</a> | <a href="#" class="btn red darken-2 delete" data-id="{{id}}" data-listid="{{gaslistId}}" data-href="{{url}}">Delete</a></li>
       {{/each}}
     </ul>
   </div>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="input-field hide confirm-item">
-          <input class="btn green darken-2" type="submit" value="Add GAS item to list"/>
+          <input id="submitItem" class="btn green darken-2" type="submit" value="Add GAS item to list"/>
         </div>
       </form>
     </div>
