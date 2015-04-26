@@ -77,6 +77,11 @@ Template.addItemModal.events({
         return;
       }
       if (result) {
+        template.$('#gas-url').val('');
+        template.$('#gas-item-title').val('');
+        // template.$('#gas-item-description').val('');
+        template.$('#gas-item-image').attr('src','');
+        template.$('.scrape-details').addClass('hide');
         template.$('#modal1').closeModal();
         console.log(result);
       }
