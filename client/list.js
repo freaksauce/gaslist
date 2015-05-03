@@ -15,22 +15,6 @@ Template.listItems.helpers({
 });
 
 Template.addItems.events({
-  // 'submit #addItemToGaslist': function(evt) {
-  //   evt.preventDefault();
-  //   var listId = evt.target.item.getAttribute('data-id');
-  //   var item = {id: Date.now(), url: evt.target.item.value};
-  //   Meteor.call('addItemToGaslist', listId, item, function(err, result) {
-  //     if (err) {
-  //       console.log('[ERROR]:\n');
-  //       console.log(err);
-  //       return;
-  //     }
-  //     if (result) {
-  //       $('input[name=item]').val('');
-  //       console.log(result);
-  //     }
-  //   });
-  // },
   'click .modal-trigger': function(evt) {
     var modalId = evt.target.getAttribute('href');
     $(modalId).openModal();
@@ -39,6 +23,8 @@ Template.addItems.events({
 
 Template.addItemModal.events({
   'click button#get-info': function(evt, template) {
+    // get url field value
+    // add url validation
     var url = template.find('#gas-url').value;
     console.log(url);
 
@@ -47,6 +33,7 @@ Template.addItemModal.events({
     // show progress bar
     template.$('.loading').removeClass('hide');
 
+    // call scrapepage to get page title and image from url
     Meteor.call('scrapepage', url, function(error, result) {
       if (error) {
         console.log(error);
@@ -54,11 +41,20 @@ Template.addItemModal.events({
         console.log(result);
         // hide progress bar
         template.$('.loading').addClass('hide');
-        
+        // show details container
         template.$('.scrape-details').removeClass('hide');
-        template.$('#gas-item-title').val(result.title);
+        if (result.title !== '') {          
+          template.$('#gas-item-title').val(result.title);
+        }else{
+          console.log('no title');
+          template.$('#gas-item-title').focus().addAttribute('placeholder','Please add a title');
+        }
         // template.$('#gas-item-description').val(result.description);
-        template.$('#gas-item-image').attr('src',result.image);
+        if (result.image !== '') {          
+          template.$('#gas-item-image').attr('src',result.image);
+        }else{
+          console.log('no image');
+        }
 
         template.$('.confirm-item').removeClass('hide');
       }
