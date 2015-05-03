@@ -33,7 +33,7 @@
       <form id="addItemToGaslist" method="post" data-id="{{_id}}">
         <div class="input-field gas-item">
           <label for="gas-url">URL</label>
-          <input id="gas-url" name="item" type="text" value="">
+          <input id="gas-url" class="validate" name="item" type="text" value="">
           <button class="btn green" type="button" id="get-info">Get info</button>
         </div>
         
@@ -47,7 +47,7 @@
         <div class="hide scrape-details">
           <div class="input-field">
             <label for="gas-item-title">Title:</label>
-            <input id="gas-item-title" type="text" value="{{title}}"/><br/>
+            <input id="gas-item-title" class="validate" type="text" value="{{title}}"/><br/>
           </div>
           <!-- <div class="input-field">
             <label for="gas-item-description">Description:</label>

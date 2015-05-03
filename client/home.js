@@ -33,6 +33,12 @@ Template.userGaslists.events({
       });
       var checkExists = checkCollection.count();
       if (checkExists == 0) {
+        if (gaslistName === '') {
+          $('input[name=gaslistName]').addClass('invalid').focus(function() {
+            $(this).removeClass('invalid');
+          });
+          return false;
+        }
         var addList = Meteor.call('addGaslist', gaslistName, function(err, result) {
           if (err) {
             console.log('[ERROR]:\n');

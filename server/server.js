@@ -8,6 +8,9 @@ Meteor.methods({
   addGaslist: function(gaslistName) {
     console.log('METHOD: addGaslist');
     var currentUserId = Meteor.userId();
+    if (gaslistName == '') {
+      return false;
+    }
     return gaslistsCollection.insert({
       listName: gaslistName,
       items: [],

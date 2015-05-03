@@ -26,6 +26,11 @@ Template.addItemModal.events({
     // get url field value
     // add url validation
     var url = template.find('#gas-url').value;
+    // if url is empty exit and make field invalid
+    if (url === '') {
+      template.$('#gas-url').addClass('invalid');
+      return false;
+    }
     console.log(url);
 
     // hide find button
@@ -66,6 +71,11 @@ Template.addItemModal.events({
     var listId = evt.target.getAttribute('data-id');
     var item = {id: Date.now(), url: template.$('#gas-url').val(), title: template.$('#gas-item-title').val(), image: template.$('#gas-item-image').attr('src')};
     console.log(item);
+    if (item.url === '' || item.title === '') {
+      template.$('#gas-url').addClass('invalid');
+      template.$('#gas-item-title').addClass('invalid');
+      return false;
+    }
     Meteor.call('addItemToGaslist', listId, item, function(err, result) {
       if (err) {
         console.log('[ERROR]:\n');
