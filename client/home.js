@@ -1,6 +1,6 @@
 Meteor.subscribe('gaslistsCollection');
 
-Template.userGaslists.created = function() {
+Template.userGaslists.onCreated = function() {
   this.gaslistName = new ReactiveVar;
 }
 
